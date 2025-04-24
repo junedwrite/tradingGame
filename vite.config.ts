@@ -5,7 +5,8 @@ import { tempo } from "tempo-devtools/dist/vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: process.env.NODE_ENV === "development" ? "/" : process.env.VITE_BASE_PATH || "/",
+  // base: process.env.NODE_ENV === "development" ? "/" : process.env.VITE_BASE_PATH || "/",
+  base:'tradingGame',
   optimizeDeps: {
     entries: ["src/main.tsx", "src/tempobook/**/*"],
   },
