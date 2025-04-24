@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 142.1 76.2% 36.3%;
+    --primary-foreground: 355.7 100% 97.3%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 142.1 76.2% 36.3%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 142.1 70.6% 45.3%;
+    --primary-foreground: 144.9 80.4% 10%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 142.4 71.8% 29.2%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Flip countdown timer styles */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-x-180 {
+  transform: rotateX(-180deg);
+}
+
+.transition-transform {
+  transition-property: transform;
+}
+
+.duration-600 {
+  transition-duration: 600ms;
+}
+
+/* Card face styling */
+.card-face {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: transparent; /* Hide the base number */
+}
+
+/* Pseudo-elements to create the top/bottom split effect */
+.card-face::before,
+.card-face::after {
+  content: attr(data-value); /* Display the number from data-value */
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+  background-color: #27272a; /* Match digit background (zinc-800) */
+  color: #ffffff; /* Match digit text color */
+  display: flex;
+  justify-content: center;
+}
+
+.card-face::before {
+  /* Top Half */
+  top: 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  align-items: flex-end; 
+  padding-top: 1.8em;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.05),
+    rgba(0, 0, 0, 0.1)
+  );
+}
+
+.card-face::after {
+  /* Bottom Half */
+  bottom: 0;
+  line-height: 0; /* Align text to top edge of bottom half */
+  border-top: 1px solid rgba(0, 0, 0, 0.2); /* Subtle divider */
+  border-radius: 0 0 0.5rem 0.5rem;
+  align-items: flex-start; /* Push number to top */
+  padding-top: 0.1em; /* Fine-tune vertical alignment */
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
+}
+
+/* Add height for the flip card */
+.h-22 {
+  height: 5.5rem;
+}
+.tick {
+  padding-bottom: 1em;
+  font-size: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans,
+      Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+}
+
+.tick-label {
+  font-size: 0.375em;
+  text-align: center;
+}
+
+.tick-group {
+  margin: 0 0.25em;
+  text-align: center;
+}
